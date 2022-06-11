@@ -1,0 +1,24 @@
+<h3>{{SeriesName}} Standings</h3>
+<br />
+<table style="width: 75%">
+  <thead>
+    <tr>
+      <th style="width: 35%"></th>
+      <th style="width: 13%; text-align: right">Games</th>
+      <th style="width: 13%; text-align: right">Points</th>
+      <th style="width: 18%; text-align: right">Attacks for</th>
+      <th style="width: 21%; text-align: right">Attacks against</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let currentRow of Standings">
+      <td>{{ currentRow.SeriesName }}</td>
+      <td style="text-align: right">{{ currentRow.GamesPlayed }}</td>
+      <td style="text-align: right">
+        {{ currentRow.Wins*3 + currentRow.Loss }}
+      </td>
+      <td style="text-align: right">{{ currentRow.AttacksFor }}</td>
+      <td style="text-align: right">{{ currentRow.AttacksAgainst }}</td>
+    </tr>
+  </tbody>
+</table>

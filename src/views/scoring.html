@@ -1,0 +1,62 @@
+<h3>{{SeriesName}}</h3>
+
+<br />
+<form>
+  <p>Season starts: {{ SeasonStart }} &nbsp;</p>
+
+  <div class="container" [ngSwitch]="CurrentRole*10">
+    <div *ngSwitchCase="10">Head Referee</div>
+    <div *ngSwitchCase="20">Referee</div>
+    <div *ngSwitchCase="30">Scorekeeper</div>
+    <div *ngSwitchCase="40">Admin</div>
+    <div *ngSwitchDefault>End User</div>
+  </div>
+  <br />
+
+  <p style="font-size: large; margin-left: 50px">
+    Game:
+    <select (change)="onScheduleChanged($event.target.value)">
+      <option *ngFor="let currentRow of MySchedule" value="{{currentRow.id}}">
+        {{ currentRow.Fighter1 +" vs "+ currentRow.Fighter2 }}
+      </option>
+    </select>
+  </p>
+
+  <p
+    class="form-group"
+    style="font-size: large; margin-left: 50px; width: 350px"
+  >
+    <label for="Fighter1" style="float: left">{{Fighter1}}</label>
+    <input
+      type="number"
+      style="width: 80px; float: right; text-align: right"
+      (input)="Fighter1Score = $event.target.value"
+      class="form-control"
+      id="Fighter1"
+      [value]="Fighter1Score"
+    />
+  </p>
+  <br />
+  <p
+    class="form-group"
+    style="font-size: large; margin-left: 50px; width: 350px"
+  >
+    <label for="Fighter2">{{Fighter2}} </label>
+    <input
+      type="number"
+      style="width: 80px; float: right; text-align: right"
+      (input)="Fighter2Score = $event.target.value"
+      class="form-control"
+      id="Fighter2"
+      [value]="Fighter2Score"
+    />
+  </p>
+
+  <button
+    type="button"
+    (click)="onRecordScores()"
+    style="font-size: large; margin-left: 50px"
+  >
+    Record Scores
+  </button>
+</form>
